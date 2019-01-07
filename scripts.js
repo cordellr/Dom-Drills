@@ -43,60 +43,74 @@ document.addEventListener("DOMContentLoaded", function () {
     let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
         '#E6B333', '#3366E6', '#999966'];
 
-    function chooseRandomColor () {
+    function chooseRandomColor() {
         let randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
         return randomColor;
     }
 
-    h1.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h1.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h1.style.color = randomColor;
     });
 
-    h2.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h2.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h2.style.color = randomColor;
     });
 
-    h3.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h3.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h3.style.color = randomColor;
     });
 
-    h4.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h4.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h4.style.color = randomColor;
     });
 
-    h5.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h5.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h5.style.color = randomColor;
     });
 
-    h6.addEventListener("dblclick", function(){
-        let randomColor = chooseRandomColor ();
+    h6.addEventListener("dblclick", function () {
+        let randomColor = chooseRandomColor();
         h6.style.color = randomColor;
     });
 
-let listBtn = document.createElement("button");
-listBtn.className = "list button";
-let btnText = document.createTextNode("Click to add new list item");
-listBtn.appendChild(btnText);
-headerContainer.appendChild(listBtn);
+    let listBtn = document.createElement("button");
+    listBtn.className = "list button";
+    let btnText = document.createTextNode("Click to add new list item");
+    listBtn.appendChild(btnText);
+    headerContainer.appendChild(listBtn);
 
-let list = document.createElement('ul');
-headerContainer.appendChild(list);
+    let list = document.createElement('ul');
+    headerContainer.appendChild(list);
 
-let listCount = 0;
+    let listCount = 0;
 
-function addToList() {
-    listCount ++;
-    let li = document.createElement('li');
-    let liText = document.createTextNode("This is list item " + listCount)
-    li.appendChild(liText);
-    list.appendChild(li);
-};
+    function addToList() {
+        //creates new list item with counter
+        listCount++;
+        let li = document.createElement('li');
+        let liText = document.createTextNode("This is list item " + listCount)
+        li.appendChild(liText);
+        list.appendChild(li);
 
-listBtn.addEventListener("click", addToList);
+        //colors list item if clicked
+        li.addEventListener("click", function () {
+            let randomColor = chooseRandomColor();
+            li.style.color = randomColor;
+        });
+
+        //removes list item if double-clicked
+        li.addEventListener("dblclick", function () {
+            this.remove();
+        });
+
+
+    };
+
+    listBtn.addEventListener("click", addToList);
 
 })
